@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["base58"] = [{"text":"impl Freeze for <a class=\"enum\" href=\"base58/base58/enum.DecodeError.html\" title=\"enum base58::base58::DecodeError\">DecodeError</a>","synthetic":true,"types":["base58::base58::DecodeError"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

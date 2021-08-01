@@ -1,0 +1,5 @@
+var searchIndex = JSON.parse('{\
+"base58":{"doc":"","t":[0,4,8,8,13,13,13,11,11,10,10,11,11,11,11,11,11,11,11],"n":["base58","DecodeError","Decoder","Encoder","Invalid","InvalidCharacter","InvalidLength","borrow","borrow_mut","decode","encode","eq","fmt","from","into","ne","try_from","try_into","type_id"],"q":["base58","base58::base58","","","","","","","","","","","","","","","","",""],"d":["base58 编码 base58 …","用于处理解码失败的错误类型","","","","","","","","","","","","","","","","",""],"i":[0,0,0,0,1,1,1,1,1,2,3,1,1,1,1,1,1,1,1],"f":[null,null,null,null,null,null,null,[[]],[[]],[[],[["decodeerror",4],["string",3],["result",4]]],[[],["string",3]],[[["decodeerror",4]],["bool",15]],[[["formatter",3]],["result",6]],[[]],[[]],[[["decodeerror",4]],["bool",15]],[[],["result",4]],[[],["result",4]],[[],["typeid",3]]],"p":[[4,"DecodeError"],[8,"Decoder"],[8,"Encoder"]]},\
+"main":{"doc":"","t":[5],"n":["main"],"q":["main"],"d":[""],"i":[0],"f":[[[]]],"p":[]}\
+}');
+if (window.initSearch) {window.initSearch(searchIndex)};
