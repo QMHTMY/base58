@@ -1,9 +1,9 @@
-use base58::base58::{ToBase58, FromBase58};
+use base58::base58::{Encoder, Decoder};
 
 fn main() {
     let bs58 = "E2DKDDG";
-    println!("{:?}", bs58.from_base58().unwrap());
+    println!("{:?}", bs58.encode());
 
-    let strc = b"wechatxjp";
-    println!("{:?}", strc.to_base58());
+    let strc = "3d6BsgcGmC";
+    println!("{:?}", strc.decode().unwrap());
 }
