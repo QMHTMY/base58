@@ -25,11 +25,11 @@ pub enum DecodeError {
 }
 
 pub trait Encoder {
-    fn encode(&self) -> String;
+    fn encode_to_base58(&self) -> String;
 }
 
 pub trait Decoder {
-    fn decode(&self) -> Result<String, DecodeError>;
+    fn decode_from_base58(&self) -> Result<String, DecodeError>;
 }
 
 impl Encoder for str {
@@ -41,9 +41,9 @@ impl Encoder for str {
     ///
     /// let src = "abc";
     /// let des = "ZiCa";
-    /// assert_eq!(des, src.encode());
+    /// assert_eq!(des, src.encode_to_base58());
     /// ```
-    fn encode(&self) -> String {
+    fn encode_to_base58(&self) -> String {
         let str_u8 = self.as_bytes();
         let zcount = str_u8
                     .iter()
@@ -99,9 +99,9 @@ impl Decoder for str {
     ///
     /// let src = "7T5VrPqoBr9DeUXiUr2Fn";
     /// let des = "我爱你iloveu";
-    /// assert_eq!(des, src.decode().unwrap());
+    /// assert_eq!(des, src.decode_from_base58().unwrap());
     /// ```
-    fn decode(&self) -> Result<String, DecodeError> {
+    fn decode_from_base58(&self) -> Result<String, DecodeError> {
         let mut bin = [0u8; 132];
         let mut out = [0u32; (132 + 3) / 4];
         let bytesleft = (bin.len() % 4) as u8;
