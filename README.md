@@ -19,12 +19,12 @@ Compared to Base64, the following similar-looking letters are omitted: 0 (zero),
 ```
 // encode to base58 string
 pub trait Encoder {
-	fn encode(&self) -> String;
+	fn encode_to_base58(&self) -> String;
 }
 
 // Decode from base58 string
 pub trait Decoder {
-	fn decode(&self) -> Result<String , DecodeError>;
+	fn decode_from_base58(&self) -> Result<String , DecodeError>;
 }
 ```
 
@@ -40,10 +40,10 @@ use base58::base58::{Encoder, Decoder};
 
 fn main() {
     let bs58 = "E2DKDDG";
-    println!("{:?}", bs58.encode());
+    println!("{:?}", bs58.encode_to_base58());
 
     let strc = "3d6BsgcGmC";
-    println!("{:?}", strc.decode().unwrap());
+    println!("{:?}", strc.decode_from_base58().unwrap());
 }
 ```
 
