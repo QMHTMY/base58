@@ -20,6 +20,8 @@ const BASE58_DIGITS_MAP: &'static [i8] = &[
     -1,33,34,35,36,37,38,39,40,41,42,43,-1,44,45,46,
     47,48,49,50,51,52,53,54,55,56,57,-1,-1,-1,-1,-1,
 ];
+/// 数前面的 0 用 1 来代替
+const ALPHABET_INDEX_0: char = '1';
 
 /// 用于处理解码失败的错误类型
 #[derive(Debug, PartialEq)]
@@ -52,7 +54,7 @@ impl Encoder for str {
         let str_u8 = self.as_bytes();
         let zcount = str_u8
                     .iter()
-                    .take_while(|x| **x == 0)
+                    .take_while(|&&x| x == 0)
                     .count();
         let size = (str_u8.len() - zcount) * 138 / 100 + 1;
 
@@ -79,12 +81,12 @@ impl Encoder for str {
 
         let mut base58_str = String::new();
         for _ in 0..zcount {
-            base58_str.push('1');
+            base58_str.push(ALPHABET_INDEX_0);
         }
 
         let mut j = buffer
                     .iter()
-                    .take_while(|x| **x == 0)
+                    .take_while(|&&x| x == 0)
                     .count();
         while j < size {
             base58_str.push(ALPHABET[buffer[j] as usize] as char);
@@ -116,7 +118,7 @@ impl Decoder for str {
         };
 
         let zcount = self.chars()
-                     .take_while(|x| *x == '1')
+                     .take_while(|&x| x == ALPHABET_INDEX_0)
                      .count();
         let mut i = zcount;
         let b58: Vec<u8> = self.bytes().collect();
@@ -171,7 +173,7 @@ impl Decoder for str {
 
         let leading_zeros = bin
                             .iter()
-                            .take_while(|x| **x == 0)
+                            .take_while(|&&x| x == 0)
                             .count();
         let new_str = String::from_utf8(bin[leading_zeros - zcount..].to_vec());
         match new_str {
